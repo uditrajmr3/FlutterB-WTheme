@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial_two/screens/screen_splash.dart';
+import 'package:tutorial_two/widgets/themes.dart';
 
 void main() {
   runApp(const TutorialTwo());
@@ -10,10 +11,12 @@ class TutorialTwo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      themeMode: ThemeMode.light,
+    return MaterialApp(
+      themeMode: ThemeMode.system,
+      theme: MyTheme.lightTheme(context),
+      darkTheme: MyTheme.darkTheme(context),
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }
