@@ -1,18 +1,16 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tutorial_two/screens/screen_signup.dart';
 import 'package:tutorial_two/utils/routes.dart';
-
 import 'package:velocity_x/velocity_x.dart';
-import 'package:tutorial_two/widgets/widget_text_field.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+import '../widgets/widget_text_field.dart';
+
+class SignupScreen extends StatelessWidget {
+  const SignupScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    double h = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -30,12 +28,12 @@ class LoginScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      "Welcome",
+                      "Hello There",
                       style:
                           TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "We are glad to see you back here",
+                      "We are glad to welcome you here",
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -44,6 +42,15 @@ class LoginScreen extends StatelessWidget {
                     ),
                     const SizedBox(
                       height: 50,
+                    ),
+                    const TextFieldWidget(
+                      hint: "Enter E-mail",
+                      obscuretext: false,
+                      prefixiconCode: "0xe22a",
+                      prefixiconfamily: "MaterialIcons",
+                    ),
+                    const SizedBox(
+                      height: 20,
                     ),
                     const TextFieldWidget(
                       hint: "Enter Username",
@@ -68,14 +75,31 @@ class LoginScreen extends StatelessWidget {
                         Expanded(
                           child: Container(),
                         ),
-                        Text(
-                          "Forgot Paswword?",
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey[500],
-                          ),
-                        ),
+                        RichText(
+                          text: TextSpan(children: <TextSpan>[
+                            TextSpan(
+                              text: 'Already have an account? ',
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.grey[500],
+                                fontFamily: GoogleFonts.syne().fontFamily,
+                              ),
+                            ),
+                            TextSpan(
+                                text: 'Login',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: context.theme.cardColor,
+                                  fontFamily: GoogleFonts.syne().fontFamily,
+                                ),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    Navigator.pushReplacementNamed(
+                                        context, MyRoutes.loginRoute);
+                                  }),
+                          ]),
+                        )
                       ],
                     ),
                   ],
@@ -101,35 +125,9 @@ class LoginScreen extends StatelessWidget {
                     shadowColor: MaterialStateProperty.all(
                         context.theme.scaffoldBackgroundColor),
                   ),
-                  child: const Text("Login"),
+                  child: const Text("Signup"),
                 ),
               ),
-              SizedBox(height: h * 0.08),
-              RichText(
-                text: TextSpan(children: <TextSpan>[
-                  TextSpan(
-                    text: 'Don\'t have an account? ',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.grey[500],
-                      fontFamily: GoogleFonts.syne().fontFamily,
-                    ),
-                  ),
-                  TextSpan(
-                      text: 'Create account',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                        color: context.theme.cardColor,
-                        fontFamily: GoogleFonts.syne().fontFamily,
-                      ),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          Navigator.pushReplacementNamed(
-                              context, MyRoutes.signupRoute);
-                        }),
-                ]),
-              )
             ],
           ),
         ),
