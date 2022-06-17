@@ -12,6 +12,8 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var usernameController = TextEditingController();
+    var passwordController = TextEditingController();
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Center(
@@ -45,20 +47,22 @@ class LoginScreen extends StatelessWidget {
                     const SizedBox(
                       height: 50,
                     ),
-                    const TextFieldWidget(
+                    TextFieldWidget(
                       hint: "Enter Username",
                       obscuretext: false,
                       prefixiconCode: "0xf01f3",
                       prefixiconfamily: "MaterialIcons",
+                      textFieldController: usernameController,
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    const TextFieldWidget(
+                    TextFieldWidget(
                       hint: "Enter Password",
                       obscuretext: true,
                       prefixiconCode: "0xf0050",
                       prefixiconfamily: "MaterialIcons",
+                      textFieldController: passwordController,
                     ),
                     const SizedBox(
                       height: 30,

@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "1007354790816",
-    "project_id": "empyreal-infotech-9f34e",
-    "storage_bucket": "empyreal-infotech-9f34e.appspot.com"
+    "project_number": "25119551468",
+    "project_id": "empyreal-infotech-2cfcd",
+    "storage_bucket": "empyreal-infotech-2cfcd.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1007354790816:android:9d384a544c0bf6b4e9dac5",
+        "mobilesdk_app_id": "1:25119551468:android:b68fae20e4358c407e9ac9",
         "android_client_info": {
           "package_name": "com.uditrajmr3.tutorial_two"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1007354790816-hinjgil0m741sj65sb8sbhlnflpv6u0r.apps.googleusercontent.com",
+          "client_id": "25119551468-jqbi30jeh9h6t3gpaj78656jei5qd8nk.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBeRDkknQpdxrzRP1ICgI3EXxgHmAt88D0"
+          "current_key": "AIzaSyAqAWykRNLYZcgo0LTch5e2tl2hzlqhofM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1007354790816-hinjgil0m741sj65sb8sbhlnflpv6u0r.apps.googleusercontent.com",
+              "client_id": "25119551468-jqbi30jeh9h6t3gpaj78656jei5qd8nk.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

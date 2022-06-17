@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tutorial_two/utils/auth_controller.dart';
 import 'package:tutorial_two/utils/routes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -11,6 +12,10 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var emailController = TextEditingController();
+    var usernameController = TextEditingController();
+    var passwordController = TextEditingController();
+
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -43,29 +48,32 @@ class SignupScreen extends StatelessWidget {
                     const SizedBox(
                       height: 50,
                     ),
-                    const TextFieldWidget(
+                    TextFieldWidget(
                       hint: "Enter E-mail",
                       obscuretext: false,
                       prefixiconCode: "0xe22a",
                       prefixiconfamily: "MaterialIcons",
+                      textFieldController: emailController,
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    const TextFieldWidget(
+                    TextFieldWidget(
                       hint: "Enter Username",
                       obscuretext: false,
                       prefixiconCode: "0xf01f3",
                       prefixiconfamily: "MaterialIcons",
+                      textFieldController: usernameController,
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    const TextFieldWidget(
+                    TextFieldWidget(
                       hint: "Enter Password",
                       obscuretext: true,
                       prefixiconCode: "0xf0050",
                       prefixiconfamily: "MaterialIcons",
+                      textFieldController: passwordController,
                     ),
                     const SizedBox(
                       height: 30,
@@ -120,7 +128,9 @@ class SignupScreen extends StatelessWidget {
                   ),
                 ], borderRadius: BorderRadius.circular(40)),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    //AuthController.instance.register(email, username, password)
+                  },
                   style: ButtonStyle(
                     shadowColor: MaterialStateProperty.all(
                         context.theme.scaffoldBackgroundColor),

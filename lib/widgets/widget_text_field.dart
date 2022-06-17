@@ -9,7 +9,7 @@ class TextFieldWidget extends StatelessWidget {
   final String prefixiconfamily;
   final String suffixiconCode;
   final String suffixiconfamily;
-  final String textFieldController;
+  final TextEditingController textFieldController;
   final bool obscuretext;
 
   const TextFieldWidget(
@@ -20,7 +20,7 @@ class TextFieldWidget extends StatelessWidget {
       this.prefixiconfamily = "MaterialIcons",
       this.suffixiconCode = "",
       this.suffixiconfamily = "",
-      this.textFieldController = "",
+      required this.textFieldController,
       this.obscuretext = false});
 
   @override
@@ -38,6 +38,7 @@ class TextFieldWidget extends StatelessWidget {
             ),
           ]),
       child: TextField(
+        controller: textFieldController,
         style: TextStyle(
             color: context.theme.cardColor,
             fontFamily: GoogleFonts.syne().fontFamily),
