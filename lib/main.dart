@@ -9,9 +9,9 @@ import 'package:tutorial_two/utils/auth_controller.dart';
 import 'package:tutorial_two/utils/routes.dart';
 import 'package:tutorial_two/widgets/themes.dart';
 
-Future<void> main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp().then((value) {
+  Firebase.initializeApp().then((value) {
     Get.put(AuthController());
   });
   runApp(const TutorialTwo());
@@ -22,7 +22,7 @@ class TutorialTwo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       themeMode: ThemeMode.system,
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.darkTheme(context),

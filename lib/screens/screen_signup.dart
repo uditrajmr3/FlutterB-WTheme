@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:tutorial_two/utils/auth_controller.dart';
 import 'package:tutorial_two/utils/routes.dart';
 import 'package:velocity_x/velocity_x.dart';
-
 import '../widgets/widget_text_field.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -129,7 +128,12 @@ class SignupScreen extends StatelessWidget {
                 ], borderRadius: BorderRadius.circular(40)),
                 child: ElevatedButton(
                   onPressed: () {
-                    //AuthController.instance.register(email, username, password)
+                    AuthController.instance.register(
+                      context,
+                      emailController.text.toString(),
+                      usernameController.text.toString(),
+                      passwordController.text.toString(),
+                    );
                   },
                   style: ButtonStyle(
                     shadowColor: MaterialStateProperty.all(

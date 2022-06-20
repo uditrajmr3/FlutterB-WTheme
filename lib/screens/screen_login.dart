@@ -1,19 +1,24 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tutorial_two/screens/screen_signup.dart';
-import 'package:tutorial_two/utils/routes.dart';
-
-import 'package:velocity_x/velocity_x.dart';
 import 'package:tutorial_two/widgets/widget_text_field.dart';
+import 'package:velocity_x/velocity_x.dart';
+import '../utils/auth_controller.dart';
+import '../utils/routes.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  var emailLoginController = TextEditingController();
+  var passwordLoginController = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
-    var usernameController = TextEditingController();
-    var passwordController = TextEditingController();
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Center(
@@ -48,22 +53,20 @@ class LoginScreen extends StatelessWidget {
                       height: 50,
                     ),
                     TextFieldWidget(
-                      hint: "Enter Username",
-                      obscuretext: false,
-                      prefixiconCode: "0xf01f3",
-                      prefixiconfamily: "MaterialIcons",
-                      textFieldController: usernameController,
-                    ),
+                        hint: "Enter E-mail",
+                        obscuretext: false,
+                        prefixiconCode: "0xe22a",
+                        prefixiconfamily: "MaterialIcons",
+                        textFieldController: emailLoginController),
                     const SizedBox(
                       height: 20,
                     ),
                     TextFieldWidget(
-                      hint: "Enter Password",
-                      obscuretext: true,
-                      prefixiconCode: "0xf0050",
-                      prefixiconfamily: "MaterialIcons",
-                      textFieldController: passwordController,
-                    ),
+                        hint: "Enter Password",
+                        obscuretext: true,
+                        prefixiconCode: "0xf0050",
+                        prefixiconfamily: "MaterialIcons",
+                        textFieldController: passwordLoginController),
                     const SizedBox(
                       height: 30,
                     ),
@@ -100,7 +103,13 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ], borderRadius: BorderRadius.circular(40)),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    AuthController.instance.login(
+                      context,
+                      emailLoginController.text.toString(),
+                      passwordLoginController.text.toString(),
+                    );
+                  },
                   style: ButtonStyle(
                     shadowColor: MaterialStateProperty.all(
                         context.theme.scaffoldBackgroundColor),
