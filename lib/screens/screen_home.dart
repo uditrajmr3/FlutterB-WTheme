@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:tutorial_two/screens/screen_profile.dart';
 import 'package:tutorial_two/utils/auth_controller.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -14,7 +15,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String userData = "Something went wrong...";
+  String userData = "loading...";
 
   void getUserData(BuildContext context) async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -23,18 +24,22 @@ class _HomeScreenState extends State<HomeScreen> {
     FirebaseAuth auth = FirebaseAuth.instance;
 
     String uid = auth.currentUser!.email.toString();
-
+    print(uid);
     users.doc(uid).get().then((value) {
       setState(() {
         userData = value['username'].toString();
         //print("snapshot value: $userData");
       });
+    }).onError((error, stackTrace) {
+      userData = "Something went wrong... $error";
     });
   }
 
   @override
   void initState() {
-    getUserData(context);
+    setState(() {
+      getUserData(context);
+    });
     super.initState();
   }
 
@@ -78,6 +83,34 @@ class _HomeScreenState extends State<HomeScreen> {
                           context.theme.scaffoldBackgroundColor),
                     ),
                     child: const Text("Logout"),
+                  ),
+                ),
+                const SizedBox(
+                  height: 80,
+                ),
+                Container(
+                  width: 140,
+                  height: 50,
+                  decoration: BoxDecoration(boxShadow: [
+                    BoxShadow(
+                      blurRadius: 10,
+                      spreadRadius: 7,
+                      offset: const Offset(1, 1),
+                      color: Colors.grey.withOpacity(0.1),
+                    ),
+                  ], borderRadius: BorderRadius.circular(40)),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ProfileScreen()));
+                    },
+                    style: ButtonStyle(
+                      shadowColor: MaterialStateProperty.all(
+                          context.theme.scaffoldBackgroundColor),
+                    ),
+                    child: const Text("Profile"),
                   ),
                 ),
               ],

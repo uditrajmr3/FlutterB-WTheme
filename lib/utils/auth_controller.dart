@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -23,7 +24,7 @@ class AuthController extends GetxController {
     ); //notifies app about user login and logout
 
     ever(_user,
-        _initialScreen); //this funnction will make sure user gets to correct screen
+        _initialScreen); //this function will make sure user gets to correct screen
   }
 
   _initialScreen(User? user) {
@@ -63,9 +64,14 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<void> login(BuildContext context, String email, password) async {
+  Future<void> login(BuildContext context, String username, password) async {
     try {
-      await auth.signInWithEmailAndPassword(email: email, password: password);
+      QuerySnapshot snapshot = await FirebaseFirestore.instance
+          .collection("Users")
+          .where("username", isEqualTo: username)
+          .get();
+      await auth.signInWithEmailAndPassword(
+          email: snapshot.docs[0]['email'], password: password);
       //await Future.delayed(const Duration(seconds: 2));
       Future.delayed(
           const Duration(
@@ -78,7 +84,7 @@ class AuthController extends GetxController {
             textSize: 14,
             position: VxToastPosition.center);
       });
-    } catch (e) {
+    } on FirebaseAuthException catch (e) {
       VxToast.show(context,
           msg: "Error: $e",
           bgColor: Colors.red.shade100,

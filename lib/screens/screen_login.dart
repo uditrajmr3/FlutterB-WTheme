@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tutorial_two/widgets/widget_password_field.dart';
 import 'package:tutorial_two/widgets/widget_text_field.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../utils/auth_controller.dart';
@@ -14,12 +15,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  var emailLoginController = TextEditingController();
+  var usernameLoginController = TextEditingController();
   var passwordLoginController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -53,20 +55,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 50,
                     ),
                     TextFieldWidget(
-                        hint: "Enter E-mail",
+                        hint: "Enter Username",
                         obscuretext: false,
                         prefixiconCode: "0xe22a",
                         prefixiconfamily: "MaterialIcons",
-                        textFieldController: emailLoginController),
+                        textFieldController: usernameLoginController),
                     const SizedBox(
                       height: 20,
                     ),
-                    TextFieldWidget(
-                        hint: "Enter Password",
-                        obscuretext: true,
-                        prefixiconCode: "0xf0050",
-                        prefixiconfamily: "MaterialIcons",
-                        textFieldController: passwordLoginController),
+                    PasswordFieldWidget(
+                      passwordFieldController: passwordLoginController,
+                    ),
                     const SizedBox(
                       height: 30,
                     ),
@@ -106,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () {
                     AuthController.instance.login(
                       context,
-                      emailLoginController.text.toString(),
+                      usernameLoginController.text.toString(),
                       passwordLoginController.text.toString(),
                     );
                   },

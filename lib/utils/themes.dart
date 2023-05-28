@@ -13,7 +13,7 @@ class MyTheme {
         canvasColor: Colors.grey,
         appBarTheme: const AppBarTheme(backgroundColor: Colors.blue),
         textTheme: TextTheme(
-          headline1: TextStyle(backgroundColor: Colors.grey[500]),
+          displayLarge: TextStyle(backgroundColor: Colors.grey[500]),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
@@ -32,7 +32,7 @@ class MyTheme {
   static ThemeData darkTheme(BuildContext context) {
     return ThemeData(
         fontFamily: GoogleFonts.syne().fontFamily,
-        scaffoldBackgroundColor: blackColor,
+        scaffoldBackgroundColor: Colors.black,
         colorScheme: const ColorScheme.dark(),
         primaryColor: Colors.white,
         secondaryHeaderColor: Colors.grey[100],
@@ -42,7 +42,7 @@ class MyTheme {
           backgroundColor: Colors.black,
         ),
         textTheme: const TextTheme(
-          headline1: TextStyle(backgroundColor: Colors.white60),
+          displayLarge: TextStyle(backgroundColor: Colors.white60),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(

@@ -19,7 +19,7 @@ class TextFieldWidget extends StatelessWidget {
       this.prefixiconCode = "",
       this.prefixiconfamily = "MaterialIcons",
       this.suffixiconCode = "",
-      this.suffixiconfamily = "",
+      this.suffixiconfamily = "MaterialIcons",
       required this.textFieldController,
       this.obscuretext = false});
 
@@ -47,7 +47,10 @@ class TextFieldWidget extends StatelessWidget {
           focusColor: context.theme.scaffoldBackgroundColor,
           iconColor: context.theme.scaffoldBackgroundColor,
           prefixIcon: Icon(
-            IconData(int.parse(prefixiconCode), fontFamily: prefixiconfamily),
+            IconData(
+              int.parse(prefixiconCode),
+              fontFamily: prefixiconfamily,
+            ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),
